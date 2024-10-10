@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hälsokollen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        Välkommen till Hälsokollen
+    </header>
+
+    <div class="container">
+        <!-- Översikt -->
+        <section class="overview">
+            <h2>Översikt</h2>
+            <p>Hälsokollen är din digitala vän för att hålla koll på hälsan! Här hittar du verktyg som BMI-kalkylator, stegräknare och kaloriräknare för att lättare kunna uppnå dina hälsomål. Klicka på ett verktyg nedan eller skrolla nedåt för att komma igång.</p>
+            <div class="tools">
+                <a href="#bmikalkylator">BMI Kalkylator</a>
+                <a href="#stegraknare">Stegräknare</a>
+                <a href="#kaloriraknare">Kaloriräknare</a>
+            </div>
+        </section>
+
+        <!-- BMI-kalkylator -->
+        <section id="bmikalkylator" class="tool-section">
+            <h2>BMI Kalkylator</h2>
+            <p>Ange din längd och vikt för att beräkna ditt BMI och få en indikation på ditt hälsotillstånd.</p>
+            <label for="height">Längd (cm):</label>
+            <input type="number" id="height" placeholder="Ange din längd">
+            <label for="weight">Vikt (kg):</label>
+            <input type="number" id="weight" placeholder="Ange din vikt">
+            <button onclick="calculateBMI()">Beräkna BMI</button>
+            <div class="result" id="bmiResult"></div>
+        </section>
+
+        <!-- Stegräknare -->
+        <section id="stegraknare" class="tool-section">
+            <h2>Stegräknare</h2>
+            <p>Här kan du hålla koll på dina dagliga steg. Skriv in antalet steg du tagit idag för att få en status.</p>
+            <label for="steps">Antal steg:</label>
+            <input type="number" id="steps" placeholder="Ange dagens steg">
+            <button onclick="trackSteps()">Spara steg</button>
+            <div class="result" id="stepsResult"></div>
+        </section>
+
+        <!-- Kaloriräknare -->
+        <section id="kaloriraknare" class="tool-section">
+            <h2>Kaloriräknare</h2>
+            <p>Räkna ut dina dagliga kalorier och ha koll på ditt kaloriintag för en hälsosam livsstil.</p>
+            <label for="calories">Kaloriintag (kcal):</label>
+            <input type="number" id="calories" placeholder="Ange kalorier du ätit idag">
+            <button onclick="trackCalories()">Spara kalorier</button>
+            <div class="result" id="caloriesResult"></div>
+        </section>
+    </div>
+
+    <footer>
+        Made with <span>&#128157;</span> by Shant O Claudius
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
