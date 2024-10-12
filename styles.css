@@ -8,7 +8,6 @@ body {
 }
 
 header {
-    font-family: "dynapuff-variable", sans-serif;
     background-color: #ff851b;
     color: white;
     padding: 1.5em 0;
@@ -18,7 +17,6 @@ header {
 }
 
 .container {
-    font-family: "dynapuff-variable", sans-serif;
     width: 90%;
     max-width: 800px;
     margin: 20px auto;
@@ -30,23 +28,19 @@ header {
 }
 
 section {
-    font-family: "dynapuff-variable", sans-serif;
     margin-bottom: 50px;
 }
 
 h2 {
-    font-family: "dynapuff-variable", sans-serif;
     color: #ff851b;
     font-size: 1.8em;
 }
 
 p {
-    font-family: "dynapuff-variable", sans-serif;
     line-height: 1.6;
 }
 
 .tools {
-    font-family: "dynapuff-variable", sans-serif;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -54,7 +48,6 @@ p {
 }
 
 .tools a {
-    font-family: "dynapuff-variable", sans-serif;
     text-decoration: none;
     color: #ff851b;
     padding: 10px 15px;
@@ -70,14 +63,12 @@ p {
 }
 
 .tool-section {
-    font-family: "dynapuff-variable", sans-serif;
     display: none;
     opacity: 0;
     transition: opacity 0.6s ease;
 }
 
 input[type="number"] {
-    font-family: "dynapuff-variable", sans-serif;
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -86,7 +77,6 @@ input[type="number"] {
 }
 
 button {
-    font-family: "dynapuff-variable", sans-serif;
     background-color: #ff851b;
     color: white;
     padding: 12px 20px;
@@ -102,14 +92,16 @@ button:hover {
 }
 
 .result {
-    font-family: "dynapuff-variable", sans-serif;
     margin-top: 15px;
     font-weight: bold;
 }
 
 .alert {
-    font-family: "dynapuff-variable", sans-serif;
     color: red;
+}
+
+.normal {
+    color: #ff851b;
 }
 
 .logo {
@@ -120,13 +112,7 @@ button:hover {
     right: 10px; /* Adjust as needed */
 }
 
-.normal {
-    font-family: "dynapuff-variable", sans-serif;
-    color: #ff851b;
-}
-
 footer {
-    font-family: "dynapuff-variable", sans-serif;
     background-color: #ff851b;
     color: white;
     text-align: center;
@@ -136,8 +122,42 @@ footer {
 }
 
 footer span {
-    font-family: "dynapuff-variable", sans-serif;
     color: #FFC0CB; /* Rosa hjärta */
+}
+
+/* Popup styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears on top of other elements */
+}
+
+.popup-content {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none; /* Hides elements with this class */
 }
 
 @keyframes fadeIn {
