@@ -61,7 +61,19 @@
 
     <footer>
         Made with <span>&#128157;</span> by Shant and Claudius
+        <br> <!-- Add a line break here for separation -->
+        <button class="about-btn" onclick="toggleCredits()">About</button>
     </footer>
+
+    <!-- Popup for Credits -->
+    <div class="popup hidden" id="creditsPopup">
+        <div class="popup-content">
+            <span class="close" onclick="toggleCredits()">&times;</span>
+            <h3>Credits</h3>
+            <p>Developed by Shant and Claudius</p>
+            <p>Icons made by <a href="https://www.freepik.com" target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
