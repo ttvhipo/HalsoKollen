@@ -1,6 +1,6 @@
 /* Grundläggande stil */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "dynapuff-variable", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f4f7;
@@ -8,6 +8,7 @@ body {
 }
 
 header {
+    font-family: "dynapuff-variable", sans-serif;
     background-color: #ff851b;
     color: white;
     padding: 1.5em 0;
@@ -17,6 +18,7 @@ header {
 }
 
 .container {
+    font-family: "dynapuff-variable", sans-serif;
     width: 90%;
     max-width: 800px;
     margin: 20px auto;
@@ -28,19 +30,23 @@ header {
 }
 
 section {
+    font-family: "dynapuff-variable", sans-serif;
     margin-bottom: 50px;
 }
 
 h2 {
+    font-family: "dynapuff-variable", sans-serif;
     color: #ff851b;
     font-size: 1.8em;
 }
 
 p {
+    font-family: "dynapuff-variable", sans-serif;
     line-height: 1.6;
 }
 
 .tools {
+    font-family: "dynapuff-variable", sans-serif;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -48,6 +54,7 @@ p {
 }
 
 .tools a {
+    font-family: "dynapuff-variable", sans-serif;
     text-decoration: none;
     color: #ff851b;
     padding: 10px 15px;
@@ -63,12 +70,14 @@ p {
 }
 
 .tool-section {
+    font-family: "dynapuff-variable", sans-serif;
     display: none;
     opacity: 0;
     transition: opacity 0.6s ease;
 }
 
 input[type="number"] {
+    font-family: "dynapuff-variable", sans-serif;
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -77,6 +86,7 @@ input[type="number"] {
 }
 
 button {
+    font-family: "dynapuff-variable", sans-serif;
     background-color: #ff851b;
     color: white;
     padding: 12px 20px;
@@ -92,19 +102,23 @@ button:hover {
 }
 
 .result {
+    font-family: "dynapuff-variable", sans-serif;
     margin-top: 15px;
     font-weight: bold;
 }
 
 .alert {
+    font-family: "dynapuff-variable", sans-serif;
     color: red;
 }
 
 .normal {
+    font-family: "dynapuff-variable", sans-serif;
     color: #ff851b;
 }
 
 footer {
+    font-family: "dynapuff-variable", sans-serif;
     background-color: #ff851b;
     color: white;
     text-align: center;
@@ -114,6 +128,7 @@ footer {
 }
 
 footer span {
+    font-family: "dynapuff-variable", sans-serif;
     color: #FFC0CB; /* Rosa hjärta */
 }
 
