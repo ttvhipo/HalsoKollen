@@ -53,3 +53,8 @@ function trackCalories() {
     document.getElementById("caloriesResult").innerHTML = `Du har ätit ${calories} kalorier idag.`;
     localStorage.setItem('calories', calories);
 }
+
+function toggleCredits() {
+    const popup = document.getElementById('creditsPopup');
+    popup.classList.toggle('hidden'); // Toggle visibility of the popup
+}
