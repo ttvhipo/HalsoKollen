@@ -112,6 +112,14 @@ button:hover {
     color: red;
 }
 
+.logo {
+    height: 60px;
+    width: auto;
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+}
+
 .normal {
     font-family: "dynapuff-variable", sans-serif;
     color: #ff851b;
