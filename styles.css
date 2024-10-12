@@ -32,7 +32,7 @@ section {
 }
 
 h2 {
-    color: #4CAF50;
+    color: #ff851b;
     font-size: 1.8em;
 }
 
@@ -49,7 +49,7 @@ p {
 
 .tools a {
     text-decoration: none;
-    color: #4CAF50;
+    color: #ff851b;
     padding: 10px 15px;
     border-radius: 4px;
     background-color: #e0f4e0;
@@ -77,7 +77,7 @@ input[type="number"] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #ff851b;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -88,7 +88,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #e67518;
 }
 
 .result {
@@ -101,11 +101,11 @@ button:hover {
 }
 
 .normal {
-    color: #4CAF50;
+    color: #ff851b;
 }
 
 footer {
-    background-color: #4CAF50;
+    background-color: #ff851b;
     color: white;
     text-align: center;
     padding: 20px;
