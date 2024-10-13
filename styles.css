@@ -160,6 +160,26 @@ footer span {
     display: none; /* Hides elements with this class */
 }
 
+/* Cookie Consent Popup */
+.cookie-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it appears on top of other elements */
+    padding: 20px;
+}
+
+.cookie-popup-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Animation */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
