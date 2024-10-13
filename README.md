@@ -8,5 +8,4 @@ Denna sidan är skriven för att ge råd till männsikor för att nå dom 12 glo
  # Installering
  ### Android Apk [Länk](https://gofile.io/d/iwRi5M)
  ### Apple Mobiler, Gå in på hemsidan tryck på share knappen, skrolla sedan ner och tryck på "Add To Home Screen"
- ## EXE [Länk](https://gofile.io/d/gyqHQ0)
- Byggt på Electron
+ ### EXE [Länk](https://gofile.io/d/gyqHQ0), Byggt på Electron
