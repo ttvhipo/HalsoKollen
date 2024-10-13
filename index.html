@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hälsokollen</title>
+    
+    <!-- Add to Home Screen iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hälsokollen">
+    <link rel="apple-touch-icon" href="bilder/670bc41d1cb54_download.jpg">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://use.typekit.net/tum1zgk.css">
 </head>
@@ -15,7 +22,6 @@
     </header>
 
     <div class="container">
-        <!-- Översikt -->
         <section class="overview">
             <h2>Om hemsidan</h2>
             <p>Hälsokollen är en sida gjord för att du ska må bra fysisk. Välj några av verktgen nedan för att komma igång! Bmi Kalylatorn, beräknar om du är i bra skick kroppsvis. Den funkar genom att veta din längd och hur mycket du väger och delar det på 2. Stegräknaren säger om du har gått en bra mängd steg per dag, och samma med kalorieräknaren. Alla dessa funktioner är i "Alpha" steget. Så funktionerna är kanske lite slarviga eller ofunkernade, mer uppdateringar kommer!</p>
@@ -26,10 +32,9 @@
             </div>
         </section>
 
-        <!-- BMI-kalkylator -->
         <section id="bmikalkylator" class="tool-section">
             <h2>BMI Kalkylator</h2>
-            <p>Ange din längd och vikt för att beräkna ditt BMI och få en indikation på ditt hälsotillstånd.</p>
+            <p>Ange din längd och vikt för att beräkna ditt BMI...</p>
             <label for="height">Längd (cm):</label>
             <input type="number" id="height" placeholder="Ange din längd">
             <label for="weight">Vikt (kg):</label>
@@ -38,44 +43,52 @@
             <div class="result" id="bmiResult"></div>
         </section>
 
-        <!-- Stegräknare -->
         <section id="stegraknare" class="tool-section">
             <h2>Stegräknare</h2>
-            <p>Här kan du hålla koll på dina dagliga steg. Skriv in antalet steg du tagit idag för att få en status.(ALPHA)</p>
+            <p>Här kan du hålla koll på dina dagliga steg...</p>
             <label for="steps">Antal steg:</label>
             <input type="number" id="steps" placeholder="Ange dagens steg">
             <button onclick="trackSteps()">Spara steg</button>
             <div class="result" id="stepsResult"></div>
+            <div id="stepsList"></div> <!-- Container for steps list -->
         </section>
 
-        <!-- Kaloriräknare -->
         <section id="kaloriraknare" class="tool-section">
             <h2>Kaloriräknare</h2>
-            <p>Räkna ut dina dagliga kalorier och ha koll på ditt kaloriintag för en hälsosam livsstil.(ALPHA) </p>
+            <p>Räkna ut dina dagliga kalorier...</p>
             <label for="calories">Kaloriintag (kcal):</label>
             <input type="number" id="calories" placeholder="Ange kalorier du ätit idag">
             <button onclick="trackCalories()">Spara kalorier</button>
             <div class="result" id="caloriesResult"></div>
+            <div id="caloriesList"></div> <!-- Container for calories list -->
         </section>
     </div>
 
     <footer>
         Made with <span>&#128157;</span> by Shant and Claudius
-        <br> <!-- Add a line break here for separation -->
+        <br>
         <button class="about-btn" onclick="toggleCredits()">About</button>
     </footer>
+
+    <!-- Cookie Consent Popup -->
+    <div class="cookie-popup hidden" id="cookiePopup">
+        <div class="cookie-popup-content">
+            <p>Denna webbplats använder cookies för att spara dina steg och kalorier. Genom att fortsätta använda webbplatsen godkänner du detta.</p>
+            <button onclick="acceptCookies()">Godkänn cookies</button>
+        </div>
+    </div>
 
     <!-- Popup for Credits -->
     <div class="popup hidden" id="creditsPopup">
         <div class="popup-content">
             <span class="close" onclick="toggleCredits()">&times;</span>
             <h3>Credits</h3>
-            <p>Gjord by Shant och Claudius</p>
+            <p>Gjord av Shant och Claudius</p>
             <p>SkolProject</p>
             <p>Med hjälp av <a href="https://chatgpt.com/" target="_blank">ChatGPT</a> för Javascript Koding</p>
             <p> Domain namn köpt från <a href="https://www.namecheap.com/" target="_blank">Namecheap</a></p>
-            <p> Hosting av <a href="https://github.com/ttvhipo/HalsoKollen/" target="_blank">Github</a>, Allt är opensource, så du kan gå in och checka på koden! 
-            <p> Checkslista, Fixa spar funktionerna. Uteckla sidan mer, Fräshare och mer officel. Fler funktioner </p>
+            <p> Hosting av <a href="https://github.com/ttvhipo/HalsoKollen/" target="_blank">Github</a>, Allt är opensource, så du kan gå in och checka på koden!</p>
+            <p> Checkslista, Fixa spar funktionerna ✅. Uteckla sidan mer ❌, Fräshare och mer officel ❌. Fler funktioner ❌ </p>
             <p>Senaste uppdatering: 2024-10-13</p>
         </div>
     </div>
