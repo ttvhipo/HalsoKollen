@@ -6,6 +6,6 @@ Denna sidan är skriven för att ge råd till männsikor för att nå dom 12 glo
 ### Funktioner
 	*** BMI Kalkylator, StegRäknare och KalroieRäknar, Fler funktioner kommer.***
  # Installering
- ## [Apk](https://gofile.io/d/iwRi5M)
- ## Ios, Gå in på hemsidan tryck på share knappen, skrolla sedan ner och tryck på "Add To Home Screen"
+ ## [Android Apk Länk](https://gofile.io/d/iwRi5M)
+ ## Apple Mobiler, Gå in på hemsidan tryck på share knappen, skrolla sedan ner och tryck på "Add To Home Screen"
 
