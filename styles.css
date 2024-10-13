@@ -5,6 +5,9 @@ body {
     padding: 0;
     background-color: #f0f4f7;
     color: #333;
+    overflow-x: hidden; /* Disables horizontal scrolling */
+    overflow-y: auto; /* Allows vertical scrolling */
+    touch-action: pan-y; /* Allows vertical swiping */
 }
 
 header {
@@ -108,8 +111,8 @@ button:hover {
     height: 60px;
     width: auto;
     position: absolute;
-    top: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
+    top: 10px;
+    right: 10px;
 }
 
 footer {
@@ -136,7 +139,7 @@ footer span {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it appears on top of other elements */
+    z-index: 1000;
 }
 
 .popup-content {
@@ -157,10 +160,9 @@ footer span {
 }
 
 .hidden {
-    display: none; /* Hides elements with this class */
+    display: none;
 }
 
-/* Cookie Consent Popup */
 .cookie-popup {
     position: fixed;
     bottom: 20px;
@@ -170,7 +172,7 @@ footer span {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensure it appears on top of other elements */
+    z-index: 1000;
     padding: 20px;
 }
 
@@ -179,14 +181,35 @@ footer span {
     flex-direction: column;
 }
 
-/* Animation */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
+/* Adjustments for larger screens */
 @media (min-width: 768px) {
     .container {
         padding: 40px;
+    }
+}
+
+/* Adjustments for mobile devices */
+@media (max-width: 768px) {
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .tools {
+        flex-direction: column;
+    }
+    
+    .tools a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 20px;
     }
 }
