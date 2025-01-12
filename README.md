@@ -6,7 +6,7 @@
 ### Funktioner
 	** BMI Kalkylator, StegRäknare och KalroieRäknar, Fler funktioner kommer.**
  ## Installering
-- Android Apk [Länk](https://gofile.io/d/iwRi5M)
+-⚪ Android Apk [Länk](https://gofile.io/d/iwRi5M)
 - Apple Mobiler, Gå in på hemsidan tryck på share knappen, skrolla sedan ner och tryck på "Add To Home Screen"
 - EXE [Länk](https://gofile.io/d/gyqHQ0), Byggt på [Electron](https://www.electronjs.org/) Framework
 - Eller så kan du bara använda hemsidan https://halsokollen.xyz/
