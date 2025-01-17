@@ -34,9 +34,21 @@ section {
     margin-bottom: 50px;
 }
 
-.neon-text {
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
-}
+    /* Neon Text Style */
+    .neon-text {
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: transparent;
+        background-clip: text;
+        background-image: linear-gradient(to right, #ff6600, #ff9900);
+        text-shadow: 0 0 5px #ff6600, 0 0 10px #ff6600, 0 0 20px #ff6600;
+    }
+
+    /* Hover effect to remove glow */
+    .neon-text:hover {
+        text-shadow: none;
+    }
 
 h2 {
     color: #ff851b;
