@@ -34,21 +34,21 @@ section {
     margin-bottom: 50px;
 }
 
-    /* Neon Text Style */
-    .neon-text {
-        font-size: 3rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        color: transparent;
-        background-clip: text;
-        background-image: linear-gradient(to right, #ff6600, #ff9900);
-        text-shadow: 0 0 5px #ff6600, 0 0 10px #ff6600, 0 0 20px #ff6600;
-    }
+    /* Neon Orange Text Style */
+.neon-text {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, #ff6600, #ff9900); /* Orange gradient */
+    text-shadow: 0 0 5px #ff6600, 0 0 10px #ff6600, 0 0 20px #ff6600; /* Neon glow in orange */
+}
 
-    /* Hover effect to remove glow */
-    .neon-text:hover {
-        text-shadow: none;
-    }
+/* Hover effect to remove glow */
+.neon-text:hover {
+    text-shadow: none;
+}
 
 h2 {
     color: #ff851b;
