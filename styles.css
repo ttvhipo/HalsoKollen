@@ -1,3 +1,4 @@
+
 /* Grundläggande stil */
 body {
     font-family: "dynapuff-variable", sans-serif;
@@ -94,54 +95,7 @@ input[type="number"] {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-/* Side Menu Styling */
-.side-menu {
-    position: fixed;
-    left: -250px; /* Start off-screen */
-    top: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    transition: left 0.3s ease;
-    z-index: 1000;
-}
 
-.side-menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.side-menu li {
-    padding: 20px;
-    border-bottom: 1px solid #444;
-}
-
-.side-menu li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.side-menu li a:hover {
-    background-color: #555;
-}
-
-/* Open/Close Button */
-.side-menu.open {
-    left: 0;
-}
-
-/* Content Section */
-#content {
-    padding: 20px;
-}
-
-/* To close the side menu when clicked outside (optional) */
-body {
-    overflow-x: hidden;
-}
 button {
     background-color: #ff851b;
     color: white;
