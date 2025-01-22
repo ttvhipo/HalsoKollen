@@ -133,9 +133,3 @@ function toggleCredits() {
     const creditsPopup = document.getElementById("creditsPopup");
     creditsPopup.classList.toggle("hidden");
 }
-// Toggle the side menu
-function toggleMenu() {
-    var sideMenu = document.getElementById('side-menu');
-    sideMenu.classList.toggle('open');
-}
-
