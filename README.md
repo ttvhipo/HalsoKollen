@@ -5,10 +5,12 @@
 ## ChecksLista
 ~~Fixa spar funktionerna ✅~~. ~~Uteckla sidan mer ✅~~, ~~Fräshare och mer officel~~✅ ~~Fler funktioner ✅~~
 ### Funktioner
-	** BMI Kalkylator, StegRäknare och KalroieRäknar, Fler funktioner kommer.**
+	** BMI Kalkylator, StegRäknare och KalroieRäknar, AI hälsocoach.**
  ## Installering
 - Android Apk [Länk](https://file.io/tPPsIXH2vAgT)
 - Apple Mobiler, Gå in på hemsidan tryck på share knappen, skrolla sedan ner och tryck på "Add To Home Screen"
 - EXE [Länk](https://file.io/hVnjLo4ZzU7d), Byggt på [Electron](https://www.electronjs.org/) Framework
 - Eller så kan du bara använda hemsidan https://halsokollen.xyz/
 - Om ingen länk funkar hitta "DOWNLOADS" mappen i main branch
+ ## API för AI
+ - DeepSeek API
