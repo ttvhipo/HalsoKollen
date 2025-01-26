@@ -5,9 +5,9 @@ body {
     padding: 0;
     background-color: #f0f4f7;
     color: #333;
-    overflow-x: hidden; /* Disables horizontal scrolling */
-    overflow-y: auto; /* Allows vertical scrolling */
-    touch-action: pan-y; /* Allows vertical swiping */
+    overflow-x: hidden;
+    overflow-y: auto;
+    touch-action: pan-y;
 }
 
 header {
@@ -34,22 +34,6 @@ section {
     margin-bottom: 50px;
 }
 
-/* Neon Orange Text Style */
-.neon-text {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    color: transparent;
-    background-clip: text;
-    background-image: linear-gradient(to right, #ff6600, #ff9900); /* Orange gradient */
-    text-shadow: 0 0 5px #ff6600, 0 0 10px #ff6600, 0 0 20px #ff6600; /* Neon glow in orange */
-}
-
-/* Hover effect to remove glow */
-.neon-text:hover {
-    text-shadow: none;
-}
-
 h2 {
     color: #ff851b;
     font-size: 1.8em;
@@ -59,6 +43,7 @@ p {
     line-height: 1.6;
 }
 
+/* Tools Section - Matches Real Site */
 .tools {
     display: flex;
     justify-content: center;
@@ -69,16 +54,35 @@ p {
 .tools a {
     text-decoration: none;
     color: #ff851b;
-    padding: 10px 15px;
+    padding: 10px 15px; /* Match real site padding */
     border-radius: 4px;
     background-color: #e0f4e0;
     font-weight: bold;
     transition: background-color 0.3s, transform 0.3s;
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Full width for mobile */
+    display: block; /* Ensure full width and proper alignment */
 }
 
 .tools a:hover {
     background-color: #d0e8d0;
     transform: scale(1.05);
+}
+
+/* Mobile View - Stack Tools Vertically */
+@media (max-width: 768px) {
+    .tools {
+        flex-direction: column; /* Stack tools vertically */
+        align-items: center; /* Center-align tools container */
+        gap: 10px; /* Reduce gap between stacked items */
+    }
+
+    .tools a {
+        width: 90%; /* Slightly less than full width for better centering */
+        max-width: 300px; /* Limit maximum width for better readability */
+        padding: 10px 15px; /* Match real site padding */
+        text-align: left; /* Align text to the left */
+    }
 }
 
 .tool-section {
@@ -124,11 +128,19 @@ button:hover {
 }
 
 .logo {
-    height: 60px;
-    width: auto;
+    width: 60px;
+    height: auto;
     position: absolute;
     top: 10px;
     right: 10px;
+    transition: width 0.3s ease;
+    animation: fadeIn 1s ease;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        display: none;
+    }
 }
 
 footer {
@@ -141,10 +153,9 @@ footer {
 }
 
 footer span {
-    color: #FFC0CB; /* Rosa hjärta */
+    color: #FFC0CB;
 }
 
-/* Popup styles */
 .popup {
     position: fixed;
     top: 0;
@@ -165,6 +176,8 @@ footer span {
     width: 80%;
     max-width: 400px;
     position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .close {
@@ -173,6 +186,9 @@ footer span {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .hidden {
@@ -202,56 +218,28 @@ footer span {
     to { opacity: 1; }
 }
 
-/* Adjustments for larger screens */
-@media (min-width: 768px) {
-    .container {
-        padding: 40px;
-    }
-}
-
-/* Adjustments for mobile devices */
-@media (max-width: 768px) {
-    button {
-        padding: 10px 15px;
-        font-size: 14px;
-    }
-    
-    .tools {
-        flex-direction: column;
-    }
-    
-    .tools a {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-    
-    .container {
-        padding: 20px;
-    }
-}
-
-/* Hälso Coach Chat Styles */
-#halsocoach .chat-container {
+/* Chat Styles */
+.chat-container {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
-#halsocoach .chat-window {
+.chat-window {
     background-color: #f0f4f7;
     padding: 16px;
     height: 400px;
     overflow-y: auto;
 }
 
-#halsocoach .input-box {
+.input-box {
     background-color: #fff;
     padding: 16px;
     border-top: 1px solid #e0e0e0;
 }
 
-#halsocoach #halsocoach-input {
+#halsocoach-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -259,64 +247,49 @@ footer span {
     font-size: 16px;
 }
 
-#halsocoach .message-user {
-    background-color: #ff851b;
+.message-user {
+    background-color: #ff851b; /* Orange color */
     color: white;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 12px 12px 0 12px;
     display: inline-block;
     max-width: 80%;
     margin-bottom: 8px;
+    text-align: right;
+    margin-left: auto;
 }
 
-#halsocoach .message-ai {
-    background-color: #e0f4e0;
+.message-ai {
+    background-color: #e0e0e0; /* Light gray for AI messages */
     color: #333;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 12px 12px 12px 0;
     display: inline-block;
     max-width: 80%;
     margin-bottom: 8px;
+    text-align: left;
 }
 
-/* Code block styling */
-.code-block {
-    background-color: #1f1f1f;
-    color: #ffffff;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    margin: 0.5rem 0;
-    font-family: "Courier New", monospace;
-    font-size: 0.875rem;
-    overflow-x: auto;
+/* Spinning Circle Loading Animation */
+.loading-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top: 3px solid #ff851b; /* Orange color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
 }
 
-.code-block pre {
-    margin: 0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.copy-button {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    font-size: 0.75rem;
+/* Loading Message Container */
+.loading-message {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-}
-
-.copy-button:hover {
-    background-color: #2563eb;
-}
-
-.copy-button:active {
-    background-color: #1e40af;
+    margin-bottom: 8px;
 }
