@@ -13,23 +13,21 @@
     <meta name="apple-mobile-web-app-title" content="Hälsokollen">
     <link rel="apple-touch-icon" href="bilder/670bc41d1cb54_download.jpg">
     
-        <!-- Open Graph Meta Tags for Embedding -->
-    <meta property="og:title" content="Hälsokollen - Your Health Companion">
-    <meta property="og:description" content="Håll koll på dina dagliga steg, kaloriintag och hälsomål med Hälsokollen">
+    <!-- Open Graph Meta Tags for Embedding -->
+    <meta property="og:title" content="Hälsokollen - Din Companion">
+    <meta property="og:description" content="Håll koll på dina dagliga steg, kaloriintag och hälsomål med Hälsokollen!">
     <meta property="og:image" content="bilder/670bc41d1cb54_download.jpg">
     <meta property="og:url" content="https://halsokollen.xyz/">
     <meta property="og:type" content="website">
     
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://use.typekit.net/tum1zgk.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6286207902976437"
-     crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <a href="">
-    <img src="bilder/headerlogan.png" alt="Logo" class="logo">
-</a>
+            <img src="bilder/headerlogan.png" alt="Logo" class="logo">
+        </a>
         Välkommen till Hälsokollen
     </header>
 
@@ -65,7 +63,7 @@
             <input type="number" id="steps" placeholder="Ange dagens steg">
             <button onclick="trackSteps()">Spara steg</button>
             <div class="result" id="stepsResult"></div>
-            <div id="stepsList"></div> <!-- Container for steps list -->
+            <div id="stepsList"></div>
         </section>
 
         <section id="kaloriraknare" class="tool-section">
@@ -75,33 +73,37 @@
             <input type="number" id="calories" placeholder="Ange kalorier du ätit idag">
             <button onclick="trackCalories()">Spara kalorier</button>
             <div class="result" id="caloriesResult"></div>
-            <div id="caloriesList"></div> <!-- Container for calories list -->
+            <div id="caloriesList"></div>
         </section>
         
         <section id="halsocoach" class="tool-section">
-    <h2>Hälso Coach</h2>
-    <p>Snacka med vår AI coach! Den ger dig svar på alla dina frågor!</p>
-    <div class="chat-container bg-white rounded-lg shadow-2xl overflow-hidden">
-        <!-- Chat Window -->
-        <div id="halsocoach-chat" class="chat-window bg-gray-100" style="height: 400px; overflow-y: auto; padding: 16px;"></div>
-        <!-- Input Bar -->
-        <div class="input-box">
-            <input
-                id="halsocoach-input"
-                type="text"
-                placeholder="Skriv här..."
-                class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                onkeypress="handleHalsoCoachKeyPress(event)"
-            />
-        </div>
-    </div>
-</section>
+            <h2>Hälso Coach</h2>
+            <p>Snacka med vår AI coach! Den ger dig svar på alla dina frågor!</p>
+            <div class="chat-container bg-white rounded-lg shadow-2xl overflow-hidden">
+                <!-- Chat Window -->
+                <div id="halsocoach-chat" class="chat-window bg-gray-100" style="height: 400px; overflow-y: auto; padding: 16px;">
+                    <!-- Messages will appear here -->
+                </div>
 
-        <section id="tinkercad3d" class="tool-section"> <!-- New Section Added -->
-            <h2>3D Design </h2>
-            <p>Handheld enhet gjord i hemsidan TinkerCad, Denna enheten ska vara batteri driven och den ska innehålla en esp32 för bearbetning, esp32 erbjuder också bluetooth så man kan koppla den till mobilen.:</p>
+                <!-- Input Bar -->
+                <div class="input-box">
+                    <input
+                        id="halsocoach-input"
+                        type="text"
+                        placeholder="Skriv här..."
+                        class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        onkeypress="handleHalsoCoachKeyPress(event)"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section id="tinkercad3d" class="tool-section">
+            <h2>3D Design</h2>
+            <p>Handheld enhet gjord i hemsidan TinkerCad, Denna enheten ska vara batteri driven och den ska innehålla en esp32 för bearbetning, esp32 erbjuder också bluetooth så man kan koppla den till mobilen.</p>
+            <p style="color:red;">Funkar inte bra på mobil</p>
             <iframe width="725" height="453" src="https://www.tinkercad.com/embed/l2c2eOaMZDI?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-            </section>
+        </section>
     </div>
 
     <footer>
