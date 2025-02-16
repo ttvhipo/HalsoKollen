@@ -129,7 +129,7 @@ function toggleCredits() {
 }
 
 const QWEN_API_KEY = "sk-b64c72e192e54d51a39ecfd63e329bed"; // Your Qwen API key
-const QWEN_API_URL = "https://api.qwen.ai/v1/chat/completions"; // API endpoint
+const QWEN_API_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions"; // API endpoint
 
 const chatDiv = document.getElementById("halsocoach-chat");
 const inputField = document.getElementById("halsocoach-input");
