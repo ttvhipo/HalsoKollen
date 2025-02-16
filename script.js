@@ -155,19 +155,56 @@ function hideLoadingSpinner() {
     }
 }
 
-// Display chat history
-function displayHalsoCoachChat() {
-    halsCoachChatDiv.innerHTML = halsCoachChatHistory
-        .map(msg => `
-            <div class="mb-4">
-                <div class="${msg.role === "user" ? "text-right" : "text-left"}">
-                    <span class="${msg.role === "user" ? "message-user" : "message-ai"}">
-                        ${msg.content}
-                    </span>
-                </div>
+// Function to simulate typing effect
+async function typeMessage(message, element) {
+    const words = message.split(' ');
+    let currentText = '';
+    
+    for (let word of words) {
+        currentText += word + ' ';
+        element.textContent = currentText;
+        element.scrollIntoView({ behavior: 'smooth' });
+        await new Promise(resolve => setTimeout(resolve, 200)); // 0.2 second delay between words
+    }
+}
+
+// Display chat history with typing effect for new messages
+async function displayHalsoCoachChat(newMessage = false) {
+    // Display all previous messages instantly
+    const chatHTML = halsCoachChatHistory.slice(0, -1).map(msg => `
+        <div class="mb-4">
+            <div class="${msg.role === "user" ? "text-right" : "text-left"}">
+                <span class="${msg.role === "user" ? "message-user" : "message-ai"}">
+                    ${msg.content}
+                </span>
             </div>
-        `)
-        .join("");
+        </div>
+    `).join("");
+
+    halsCoachChatDiv.innerHTML = chatHTML;
+
+    // If there's a new message, add it with typing effect
+    if (newMessage && halsCoachChatHistory.length > 0) {
+        const lastMessage = halsCoachChatHistory[halsCoachChatHistory.length - 1];
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'mb-4';
+        
+        const alignDiv = document.createElement('div');
+        alignDiv.className = lastMessage.role === "user" ? "text-right" : "text-left";
+        
+        const messageSpan = document.createElement('span');
+        messageSpan.className = lastMessage.role === "user" ? "message-user" : "message-ai";
+        
+        alignDiv.appendChild(messageSpan);
+        messageDiv.appendChild(alignDiv);
+        halsCoachChatDiv.appendChild(messageDiv);
+
+        if (lastMessage.role === "assistant") {
+            await typeMessage(lastMessage.content, messageSpan);
+        } else {
+            messageSpan.textContent = lastMessage.content;
+        }
+    }
 
     halsCoachChatDiv.scrollTop = halsCoachChatDiv.scrollHeight;
 }
@@ -180,7 +217,7 @@ async function sendHalsoCoachMessage(message) {
 
     // Add user message to chat
     halsCoachChatHistory.push({ role: "user", content: message });
-    displayHalsoCoachChat();
+    await displayHalsoCoachChat(true);
 
     try {
         const response = await fetch(QWEN_API_URL, {
@@ -203,23 +240,25 @@ async function sendHalsoCoachMessage(message) {
 
         const data = await response.json();
         
+        hideLoadingSpinner();
+
         if (data.choices && data.choices[0].message) {
             const aiResponse = data.choices[0].message.content;
             halsCoachChatHistory.push({ role: "assistant", content: aiResponse });
             localStorage.setItem("halsCoachChatHistory", JSON.stringify(halsCoachChatHistory));
+            await displayHalsoCoachChat(true);
         } else {
             throw new Error('Invalid API response');
         }
 
     } catch (error) {
         console.error("Error:", error);
+        hideLoadingSpinner();
         halsCoachChatHistory.push({ 
             role: "assistant", 
             content: "Ett fel uppstod vid behandling av din förfrågan." 
         });
-    } finally {
-        hideLoadingSpinner();
-        displayHalsoCoachChat();
+        await displayHalsoCoachChat(true);
     }
 }
 
