@@ -129,8 +129,8 @@ function toggleCredits() {
 }
 
 // Hälso Coach Chat Script
-const HALS_COACH_API_KEY = "sk-f598e1c2ef704eb7880b2067af3bc32d"; // Your DeepSeek API key
-const HALS_COACH_API_URL = "https://api.deepseek.com/chat/completions"; // API endpoint
+const HALS_COACH_API_KEY = "sk-b64c72e192e54d51a39ecfd63e329bed"; // Your DeepSeek API key
+const HALS_COACH_API_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions"; // API endpoint
 
 const halsCoachChatDiv = document.getElementById("halsocoach-chat");
 const halsCoachInputField = document.getElementById("halsocoach-input");
@@ -206,7 +206,7 @@ async function sendHalsoCoachMessage(message) {
             "Authorization": `Bearer ${HALS_COACH_API_KEY}`
         },
         body: JSON.stringify({
-            model: "deepseek-chat",
+            model: "qwen-turbo",
             messages: [
                 { role: "system", content: "Du är en hjälpsam hälsocoach. Ditt namn är Hälso Coach. Ge hälsorelaterade råd och vägledning på svenska. Du beffiner dig på hemsidan Hälsokollen.xyz. Hemsidan är gjord av Shant Ramzi. Hemsidan är en projekt för skolan. I hemsidan finns BMI kalkylator, Stegräknare och Kaloriräknare. Det finns också en informertial om hemsidan." },
                 ...halsCoachChatHistory,
