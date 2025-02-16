@@ -128,13 +128,13 @@ function toggleCredits() {
     creditsPopup.classList.toggle("hidden");
 }
 
-const QWEN_API_KEY = "sk-b64c72e192e54d51a39ecfd63e329bed"; // Your Qwen API key
-const QWEN_API_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions"; // API endpoint
+const QWEN_API_KEY = "sk-b64c72e192e54d51a39ecfd63e329bed";
+const QWEN_API_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions";
 
-const chatDiv = document.getElementById("halsocoach-chat");
-const inputField = document.getElementById("halsocoach-input");
+const halsCoachChatDiv = document.getElementById("halsocoach-chat");
+const halsCoachInputField = document.getElementById("halsocoach-input");
 
-let chatHistory = JSON.parse(localStorage.getItem("halsCoachChatHistory")) || [];
+let halsCoachChatHistory = JSON.parse(localStorage.getItem("halsCoachChatHistory")) || [];
 
 // Show loading spinner
 function showLoadingSpinner() {
@@ -143,62 +143,46 @@ function showLoadingSpinner() {
     loadingMessage.innerHTML = `
         <div class="loading-spinner"></div>
     `;
-    chatDiv.appendChild(loadingMessage);
-    chatDiv.scrollTop = chatDiv.scrollHeight;
+    halsCoachChatDiv.appendChild(loadingMessage);
+    halsCoachChatDiv.scrollTop = halsCoachChatDiv.scrollHeight;
 }
 
 // Hide loading spinner
 function hideLoadingSpinner() {
-    const loadingMessage = chatDiv.querySelector(".loading-message");
+    const loadingMessage = halsCoachChatDiv.querySelector(".loading-message");
     if (loadingMessage) {
         loadingMessage.remove();
     }
 }
 
-// Format AI response
-function formatResponse(response) {
-    response = response.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, language, code) => {
-        return `
-            <div class="code-block">
-                <pre><code class="language-${language || 'plaintext'}">${code.trim()}</code></pre>
-            </div>
-        `;
-    });
-
-    response = response.replace(/### (.*)/g, "<h3>$1</h3>");
-    response = response.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-    response = response.replace(/^- (.*)/gm, "<li>$1</li>");
-    response = response.replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>");
-    response = response.replace(/\n/g, "<br>");
-
-    return response;
-}
-
 // Display chat history
-function displayChat() {
-    chatDiv.innerHTML = chatHistory
+function displayHalsoCoachChat() {
+    halsCoachChatDiv.innerHTML = halsCoachChatHistory
         .map(msg => `
             <div class="mb-4">
                 <div class="${msg.role === "user" ? "text-right" : "text-left"}">
                     <span class="${msg.role === "user" ? "message-user" : "message-ai"}">
-                        <strong>${msg.role === "user" ? "You" : "Hälso Coach"}:</strong> ${msg.role === "user" ? msg.content : formatResponse(msg.content)}
+                        ${msg.content}
                     </span>
                 </div>
             </div>
         `)
         .join("");
 
-    chatDiv.scrollTop = chatDiv.scrollHeight;
+    halsCoachChatDiv.scrollTop = halsCoachChatDiv.scrollHeight;
 }
 
 // Send message to Qwen API
-async function sendMessage(message) {
+async function sendHalsoCoachMessage(message) {
+    if (message.trim() === '') return;
+    
+    showLoadingSpinner();
+
+    // Add user message to chat
+    halsCoachChatHistory.push({ role: "user", content: message });
+    displayHalsoCoachChat();
+
     try {
-        showLoadingSpinner();
-
-        chatHistory.push({ role: "user", content: message });
-        displayChat();
-
         const response = await fetch(QWEN_API_URL, {
             method: "POST",
             headers: {
@@ -212,40 +196,43 @@ async function sendMessage(message) {
                         role: "system",
                         content: "Du är en hjälpsam hälsocoach. Ditt namn är Hälso Coach. Ge hälsorelaterade råd och vägledning på svenska. Du beffiner dig på hemsidan Hälsokollen.xyz. Hemsidan är gjord av Shant Ramzi. Hemsidan är en projekt för skolan. I hemsidan finns BMI kalkylator, Stegräknare och Kaloriräknare. Det finns också en informertial om hemsidan."
                     },
-                    ...chatHistory
+                    { role: "user", content: message }
                 ]
             })
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        
+        if (data.choices && data.choices[0].message) {
+            const aiResponse = data.choices[0].message.content;
+            halsCoachChatHistory.push({ role: "assistant", content: aiResponse });
+            localStorage.setItem("halsCoachChatHistory", JSON.stringify(halsCoachChatHistory));
+        } else {
+            throw new Error('Invalid API response');
         }
 
-        const data = await response.json();
-        const aiResponse = data.choices[0].message.content;
-
-        chatHistory.push({ role: "assistant", content: aiResponse });
-        localStorage.setItem("halsCoachChatHistory", JSON.stringify(chatHistory));
-
-        displayChat();
     } catch (error) {
         console.error("Error:", error);
-        chatDiv.innerHTML += `<div class="error-message">Error: ${error.message}</div>`;
+        halsCoachChatHistory.push({ 
+            role: "assistant", 
+            content: "Ett fel uppstod vid behandling av din förfrågan." 
+        });
     } finally {
         hideLoadingSpinner();
+        displayHalsoCoachChat();
     }
 }
 
 // Handle Enter key press
-function handleKeyPress(event) {
+function handleHalsoCoachKeyPress(event) {
     if (event.key === "Enter") {
-        const message = inputField.value.trim();
+        const message = halsCoachInputField.value.trim();
         if (message) {
-            sendMessage(message);
-            inputField.value = "";
+            sendHalsoCoachMessage(message);
+            halsCoachInputField.value = "";
         }
     }
 }
 
 // Add event listener
-inputField.addEventListener("keypress", handleKeyPress);
+halsCoachInputField.addEventListener("keypress", handleHalsoCoachKeyPress);
