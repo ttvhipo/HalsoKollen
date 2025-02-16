@@ -128,14 +128,13 @@ function toggleCredits() {
     creditsPopup.classList.toggle("hidden");
 }
 
-// Hälso Coach Chat Script
-const HALS_COACH_API_KEY = "sk-b64c72e192e54d51a39ecfd63e329bed"; // Your DeepSeek API key
-const HALS_COACH_API_URL = "https://api.qwen.ai/v1/chat/completions"; // API endpoint
+const QWEN_API_KEY = "sk-b64c72e192e54d51a39ecfd63e329bed"; // Your Qwen API key
+const QWEN_API_URL = "https://api.qwen.ai/v1/chat/completions"; // API endpoint
 
-const halsCoachChatDiv = document.getElementById("halsocoach-chat");
-const halsCoachInputField = document.getElementById("halsocoach-input");
+const chatDiv = document.getElementById("halsocoach-chat");
+const inputField = document.getElementById("halsocoach-input");
 
-let halsCoachChatHistory = JSON.parse(localStorage.getItem("halsCoachChatHistory")) || [];
+let chatHistory = JSON.parse(localStorage.getItem("halsCoachChatHistory")) || [];
 
 // Show loading spinner
 function showLoadingSpinner() {
@@ -144,20 +143,20 @@ function showLoadingSpinner() {
     loadingMessage.innerHTML = `
         <div class="loading-spinner"></div>
     `;
-    halsCoachChatDiv.appendChild(loadingMessage);
-    halsCoachChatDiv.scrollTop = halsCoachChatDiv.scrollHeight; // Auto-scroll
+    chatDiv.appendChild(loadingMessage);
+    chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
 // Hide loading spinner
 function hideLoadingSpinner() {
-    const loadingMessage = halsCoachChatDiv.querySelector(".loading-message");
+    const loadingMessage = chatDiv.querySelector(".loading-message");
     if (loadingMessage) {
         loadingMessage.remove();
     }
 }
 
 // Format AI response
-function formatHalsoCoachResponse(response) {
+function formatResponse(response) {
     response = response.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, language, code) => {
         return `
             <div class="code-block">
@@ -176,62 +175,77 @@ function formatHalsoCoachResponse(response) {
 }
 
 // Display chat history
-function displayHalsoCoachChat() {
-    halsCoachChatDiv.innerHTML = halsCoachChatHistory
+function displayChat() {
+    chatDiv.innerHTML = chatHistory
         .map(msg => `
             <div class="mb-4">
                 <div class="${msg.role === "user" ? "text-right" : "text-left"}">
                     <span class="${msg.role === "user" ? "message-user" : "message-ai"}">
-                        <strong>${msg.role === "user" ? "You" : "Hälso Coach"}:</strong> ${msg.role === "user" ? msg.content : formatHalsoCoachResponse(msg.content)}
+                        <strong>${msg.role === "user" ? "You" : "Hälso Coach"}:</strong> ${msg.role === "user" ? msg.content : formatResponse(msg.content)}
                     </span>
                 </div>
             </div>
         `)
         .join("");
 
-    halsCoachChatDiv.scrollTop = halsCoachChatDiv.scrollHeight;
+    chatDiv.scrollTop = chatDiv.scrollHeight;
 }
 
-// Send message to DeepSeek API
-async function sendHalsoCoachMessage(message) {
-    showLoadingSpinner(); // Show loading spinner
+// Send message to Qwen API
+async function sendMessage(message) {
+    try {
+        showLoadingSpinner();
 
-    halsCoachChatHistory.push({ role: "user", content: message });
-    displayHalsoCoachChat();
+        chatHistory.push({ role: "user", content: message });
+        displayChat();
 
-    const response = await fetch(HALS_COACH_API_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${HALS_COACH_API_KEY}`
-        },
-        body: JSON.stringify({
-            model: "qwen-turbo",
-            messages: [
-                { role: "system", content: "Du är en hjälpsam hälsocoach. Ditt namn är Hälso Coach. Ge hälsorelaterade råd och vägledning på svenska. Du beffiner dig på hemsidan Hälsokollen.xyz. Hemsidan är gjord av Shant Ramzi. Hemsidan är en projekt för skolan. I hemsidan finns BMI kalkylator, Stegräknare och Kaloriräknare. Det finns också en informertial om hemsidan." },
-                ...halsCoachChatHistory,
-            ],
-            stream: false
-        })
-    });
+        const response = await fetch(QWEN_API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${QWEN_API_KEY}`
+            },
+            body: JSON.stringify({
+                model: "qwen-turbo",
+                messages: [
+                    {
+                        role: "system",
+                        content: "Du är en hjälpsam hälsocoach. Ditt namn är Hälso Coach. Ge hälsorelaterade råd och vägledning på svenska. Du beffiner dig på hemsidan Hälsokollen.xyz. Hemsidan är gjord av Shant Ramzi. Hemsidan är en projekt för skolan. I hemsidan finns BMI kalkylator, Stegräknare och Kaloriräknare. Det finns också en informertial om hemsidan."
+                    },
+                    ...chatHistory
+                ]
+            })
+        });
 
-    const data = await response.json();
-    const aiResponse = data.choices[0].message.content;
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-    halsCoachChatHistory.push({ role: "assistant", content: aiResponse });
-    localStorage.setItem("halsCoachChatHistory", JSON.stringify(halsCoachChatHistory));
+        const data = await response.json();
+        const aiResponse = data.choices[0].message.content;
 
-    displayHalsoCoachChat();
-    hideLoadingSpinner(); // Hide loading spinner
+        chatHistory.push({ role: "assistant", content: aiResponse });
+        localStorage.setItem("halsCoachChatHistory", JSON.stringify(chatHistory));
+
+        displayChat();
+    } catch (error) {
+        console.error("Error:", error);
+        chatDiv.innerHTML += `<div class="error-message">Error: ${error.message}</div>`;
+    } finally {
+        hideLoadingSpinner();
+    }
 }
 
 // Handle Enter key press
-function handleHalsoCoachKeyPress(event) {
+function handleKeyPress(event) {
     if (event.key === "Enter") {
-        const message = halsCoachInputField.value.trim();
+        const message = inputField.value.trim();
         if (message) {
-            sendHalsoCoachMessage(message);
-            halsCoachInputField.value = "";
+            sendMessage(message);
+            inputField.value = "";
         }
     }
 }
+
+// Add event listener
+inputField.addEventListener("keypress", handleKeyPress);
