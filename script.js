@@ -164,7 +164,7 @@ async function typeMessage(message, element) {
         currentText += word + ' ';
         element.textContent = currentText;
         element.scrollIntoView({ behavior: 'smooth' });
-        await new Promise(resolve => setTimeout(resolve, 200)); // 0.2 second delay between words
+        await new Promise(resolve => setTimeout(resolve, 50)); // 0.2 second delay between words
     }
 }
 
