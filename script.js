@@ -130,7 +130,7 @@ function toggleCredits() {
 
 // Hälso Coach Chat Script
 const HALS_COACH_API_KEY = "sk-b64c72e192e54d51a39ecfd63e329bed"; // Your DeepSeek API key
-const HALS_COACH_API_URL = "https://dashscope-intl.aliyuncs.com/compatible-mode/v1/chat/completions"; // API endpoint
+const HALS_COACH_API_URL = "https://api.qwen.ai/v1/chat/completions"; // API endpoint
 
 const halsCoachChatDiv = document.getElementById("halsocoach-chat");
 const halsCoachInputField = document.getElementById("halsocoach-input");
