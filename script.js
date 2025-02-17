@@ -275,3 +275,11 @@ function handleHalsoCoachKeyPress(event) {
 
 // Add event listener
 halsCoachInputField.addEventListener("keypress", handleHalsoCoachKeyPress);
+        }
+    }
+}
+
+ console.log("%cHACKING IN PROGRESS...", "color: red; font-size: 30px; font-weight: bold;");
+    setInterval(() => {
+        console.log("%cAccessing secure database... ", "color: green; font-size: 20px;");
+    }, 2000);
